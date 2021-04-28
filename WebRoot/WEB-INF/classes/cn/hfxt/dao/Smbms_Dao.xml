@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="cn.hfxt.dao.Smbms_Dao">
+ 	<select id="SeleAll" parameterType="int" resultType="cn.hfxt.entity.smbms_zd">
+ 		SELECT `smbms_bill`.`billCode`,`smbms_bill`.`productName`,`smbms_provider`.`proName`,`smbms_bill`.`totalPrice`,`smbms_bill`.`isPayment`,`smbms_bill`.`creationDate`,`smbms_bill`.id FROM `smbms_bill`,`smbms_provider`
+ 		 WHERE `smbms_bill`.providerId=`smbms_provider`.`id` limit #{pageNo},#{pageSize}
+ 	</select>
+ 	<select id="SeleCount" resultType="int">
+ 		SELECT count(*) as count FROM `smbms_bill`,`smbms_provider` WHERE `smbms_bill`.providerId=`smbms_provider`.`id`
+ 	</select>
+ </mapper>
